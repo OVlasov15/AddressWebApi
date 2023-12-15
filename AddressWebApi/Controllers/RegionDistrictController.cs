@@ -1,4 +1,5 @@
 ﻿using AddressWebApi.Models;
+using AddressWebApi.Request.Query.Region;
 using AddressWebApi.Request.Query.RegionDistrict;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +20,22 @@ public class RegionDistrictController : ControllerBase
     {
         _mediator = mediator;
     }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(RegionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetByIdAsync([FromQuery, BindRequired] GetRegionDistrictByIdQuery query)
+        => Ok(await _mediator.Send(query));
+
+    [HttpGet("List/ByName")]
+    [ProducesResponseType(typeof(RegionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetByNameAsync([FromQuery, BindRequired] GetRegionDistrictListByNameQuery query)
+        => Ok(await _mediator.Send(query));
 
     [HttpGet("List/ByRegionId")]
     [ProducesResponseType(typeof(IEnumerable<RegionDistrictDto>), StatusCodes.Status200OK)]

@@ -41,4 +41,15 @@ internal class RegionDistrictService : IRegionDistrictService
 
         return regionDistrictDtoList;
     }
+
+    public async Task<RegionDistrictDto> GetByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        RegionDistrict regionDistrict = await _addressContext.RegionDistricts
+            .Where(regionDistrict => regionDistrict.Id == id)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        RegionDistrictDto regionDistrictDto = regionDistrict.ToDto();
+
+        return regionDistrictDto;
+    }
 }
