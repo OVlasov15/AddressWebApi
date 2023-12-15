@@ -15,7 +15,7 @@ internal static class RegionDistrictMapperExtension
             return Enumerable.Empty<RegionDistrictDto>();
         }
 
-        IEnumerable<RegionDistrictDto> regionDtoList = regionDistrictList.Select(region => region.ToDto());
+        IEnumerable<RegionDistrictDto> regionDtoList = regionDistrictList.Select(regionDistrict => regionDistrict.ToDto());
 
         return regionDtoList;
     }

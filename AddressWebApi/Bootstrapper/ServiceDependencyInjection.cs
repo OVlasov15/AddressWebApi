@@ -10,5 +10,6 @@ internal static class ServiceDependencyInjection
     {
         services.AddTransient<IRegionService, RegionService>();
         services.AddTransient<IRegionDistrictService, RegionDistrictService>();
+        services.AddTransient<ISettlementService, SettlementService>();
     }
 }
