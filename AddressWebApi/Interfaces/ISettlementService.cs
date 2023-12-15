@@ -10,4 +10,5 @@ public interface ISettlementService
 {
     Task<IEnumerable<SettlementDto>> GetListByRegionDistrictIdAsync(int regionDistrictId, SettlementType[] type, CancellationToken cancellationToken);
     Task<IEnumerable<SettlementDto>> GetListByNameAsync(string name, SettlementType[] type, CancellationToken cancellationToken);
+    Task<SettlementDto> GetByIdAsync(int id, CancellationToken cancellationToken);
 }

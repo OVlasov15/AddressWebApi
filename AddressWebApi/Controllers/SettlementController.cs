@@ -20,12 +20,12 @@ public class SettlementController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("List/ByRegionDistrictId")]
-    [ProducesResponseType(typeof(IEnumerable<SettlementDto>), StatusCodes.Status200OK)]
+    [HttpGet]
+    [ProducesResponseType(typeof(SettlementDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetByRegionDistrictAsync([FromQuery, BindRequired] GetSettlementListByRegionDistrictIdQuery query)
+    public async Task<IActionResult> GetByIdAsync([FromQuery, BindRequired] GetSettlementByIdQuery query)
         => Ok(await _mediator.Send(query));
 
     [HttpGet("List/ByName")]
@@ -34,5 +34,13 @@ public class SettlementController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetByNameAsync([FromQuery, BindRequired] GetSettlementListByNameQuery query)
+        => Ok(await _mediator.Send(query));
+
+    [HttpGet("List/ByRegionDistrictId")]
+    [ProducesResponseType(typeof(IEnumerable<SettlementDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetByRegionDistrictAsync([FromQuery, BindRequired] GetSettlementListByRegionDistrictIdQuery query)
         => Ok(await _mediator.Send(query));
 }

@@ -27,6 +27,17 @@ internal class SettlementService : ISettlementService
         _addressContext = addressContext;
     }
 
+    public async Task<SettlementDto> GetByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        Settlement settlemen = await _addressContext.Settlements
+            .Where(settlement => settlement.Id == id)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        SettlementDto settlementDto = settlemen.ToDto();
+
+        return settlementDto;
+    }
+
     public async Task<IEnumerable<SettlementDto>> GetListByNameAsync(string name, SettlementType[] type, CancellationToken cancellationToken)
     {
         if (type is null)
