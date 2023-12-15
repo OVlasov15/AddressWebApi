@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AddressWebApi.Context;
 
-public class AddressContext : DbContext
+internal class AddressContext : DbContext
 {
     public AddressContext(DbContextOptions<AddressContext> options)
     : base(options)
