@@ -19,8 +19,8 @@ public class GetRegionListQueryHandler : IRequestHandler<GetRegionListQuery, IEn
 
     public async Task<IEnumerable<RegionDto>> Handle(GetRegionListQuery request, CancellationToken cancellationToken)
     {
-        IEnumerable<RegionDto> brendDto = await _regionService.GetListAsync(cancellationToken);
+        IEnumerable<RegionDto> regionDto = await _regionService.GetListAsync(cancellationToken);
 
-        return brendDto;
+        return regionDto;
     }
 }
