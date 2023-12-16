@@ -20,6 +20,22 @@ public class CityDistrictController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpGet]
+    [ProducesResponseType(typeof(CityDistrictDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetByIdAsync([FromQuery, BindRequired] GetCityDistrictByIdQuery query)
+        => Ok(await _mediator.Send(query));
+
+    [HttpGet("List/ByName")]
+    [ProducesResponseType(typeof(IEnumerable<CityDistrictDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetByNameAsync([FromQuery, BindRequired] GetCityDistrictListByNameQuery query)
+        => Ok(await _mediator.Send(query));
+
     [HttpGet("List/ByCityId")]
     [ProducesResponseType(typeof(IEnumerable<CityDistrictDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

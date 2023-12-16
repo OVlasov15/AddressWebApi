@@ -1,5 +1,4 @@
 ﻿using AddressWebApi.Models;
-using AddressWebApi.Request.Query.Region;
 using AddressWebApi.Request.Query.RegionDistrict;
 using MediatR;
 using Microsoft.AspNetCore.Http;
