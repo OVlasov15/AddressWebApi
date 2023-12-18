@@ -9,10 +9,10 @@ public class Street
     public string Name { get; set; }
     public StreetType Type { get; set; }
 
-    [ForeignKey("Settlement")]
+    [ForeignKey(nameof(Settlement))]
     public int SettlementId { get; set; }
 
-    [ForeignKey("CityDistrict")]
+    [ForeignKey(nameof(CityDistrict))]
     public int? CityDistrictId { get; set; }
 
 

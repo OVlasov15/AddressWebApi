@@ -14,7 +14,7 @@ public class Settlement
 
     public SettlementType Type { get; set; }
 
-    [ForeignKey("RegionDistrict")]
+    [ForeignKey(nameof(RegionDistrict))]
     public int? RegionDistrictId { get; set; }
 
 

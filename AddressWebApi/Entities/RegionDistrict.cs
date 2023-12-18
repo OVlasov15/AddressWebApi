@@ -11,7 +11,7 @@ public class RegionDistrict
 
     public string Name { get; set; }
 
-    [ForeignKey("Region")]
+    [ForeignKey(nameof(Region))]
     public int RegionId { get; set; }
 
 

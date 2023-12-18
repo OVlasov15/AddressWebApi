@@ -11,7 +11,7 @@ public class CityDistrict
 
     public string Name { get; set; }
 
-    [ForeignKey("Settlement")]
+    [ForeignKey(nameof(Settlement))]
     public int SettlementId { get; set; }
 
     public Settlement Settlement { get; set; }
